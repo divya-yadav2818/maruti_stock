@@ -3,11 +3,14 @@ const PASSWORD_KEY = "app_password";
 const isPasswordSet = localStorage.getItem(PASSWORD_KEY);
 
 function checkPassword() {
-  const input = document.getElementById("appPassword").value;
+  const input = document.getElementById("appPassword")?.value;
   const msg = document.getElementById("pass-msg");
 
   if (!isPasswordSet) {
-    if (input.length < 4) { msg.textContent = "Password must be at least 4 characters."; return; }
+    if (input.length < 4) {
+      msg.textContent = "Password must be at least 4 characters.";
+      return;
+    }
     localStorage.setItem(PASSWORD_KEY, input);
     window.location.href = "home.html";
   } else {
@@ -19,11 +22,9 @@ function checkPassword() {
   }
 }
 
-// ---------------- Logout with Confirmation (ADDED) ----------------
+// ---------------- Logout (Direct Redirect) ----------------
 function logout() {
-  if (confirm("Do you want to exit the app?")) {
-    window.location.href = "index.html";
-  }
+  window.location.replace("index.html");
 }
 
 // ---------------- Stock Data ----------------
@@ -57,9 +58,9 @@ function saveProduct() {
 
 // Clear Form
 function clearForm() {
-  if (document.getElementById("name")) document.getElementById("name").value = "";
-  if (document.getElementById("qty")) document.getElementById("qty").value = "";
-  if (document.getElementById("min")) document.getElementById("min").value = "";
+  document.getElementById("name").value = "";
+  document.getElementById("qty").value = "";
+  document.getElementById("min").value = "";
 }
 
 // Load Inventory
@@ -110,7 +111,7 @@ function goInventory() { window.location.href = "inventory.html"; }
 function goHome() { window.location.href = "home.html"; }
 function goLowStock() { window.location.href = "lowstock.html"; }
 
-// ---------------- Auto Unit Selection (ADDED) ----------------
+// ---------------- Auto Unit Selection ----------------
 let search = document.getElementById("search");
 if (search) {
   search.addEventListener("input", () => {
@@ -125,7 +126,7 @@ if (search) {
           d.textContent = p.name + " (" + p.unit + ")";
           d.onclick = () => {
             document.getElementById("name").value = p.name;
-            document.getElementById("unit").value = p.unit; // AUTO UNIT
+            document.getElementById("unit").value = p.unit;
             sug.innerHTML = "";
           };
           sug.appendChild(d);
@@ -139,6 +140,20 @@ let invSearch = document.getElementById("inventorySearch");
 if (invSearch) {
   invSearch.addEventListener("input", e => {
     loadInventory(e.target.value.toLowerCase());
+  });
+}
+
+// ---------------- Back Button Exit Popup (INDEX ONLY) ----------------
+if (location.pathname.includes("index.html")) {
+
+  history.pushState(null, null, location.href);
+
+  window.addEventListener("popstate", function () {
+    if (confirm("Do you want to exit the app?")) {
+      window.close();
+    } else {
+      history.pushState(null, null, location.href);
+    }
   });
 }
 
