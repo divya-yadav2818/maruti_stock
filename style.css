@@ -1,0 +1,48 @@
+/* General */
+* { box-sizing: border-box; font-family:'Segoe UI', sans-serif; margin:0; padding:0; }
+body { min-height:100vh; }
+.app-container { max-width:420px; margin:auto; min-height:100vh; padding:15px; border-radius:20px 20px 0 0; }
+input, select, button { width:100%; padding:10px; margin-top:8px; border-radius:8px; border:1px solid #ccc; }
+
+/* Page Backgrounds */
+.login-bg { background: linear-gradient(135deg,#0f4c81,#1c6ea4); display:flex; align-items:center; justify-content:center; }
+.home-bg { background: linear-gradient(135deg,#0077b6,#00b4d8); }
+.inventory-bg { background: linear-gradient(135deg,#0096c7,#90e0ef); }
+.lowstock-bg { background: linear-gradient(135deg,#48cae4,#ade8f4); }
+
+/* Login Container */
+.login-container { background:white; padding:20px; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); width:90%; max-width:350px; text-align:center; }
+.error-msg { color:red; margin-top:10px; }
+
+/* Header */
+header { display:flex; flex-direction: column; margin-bottom:10px; }
+header h2 { color:white; margin-bottom:8px; }
+.header-buttons { display:flex; gap:8px; margin-bottom:10px; }
+
+/* Buttons */
+.primary-btn { background:#023e8a; color:white; border:none; cursor:pointer; transition:0.3s; }
+.primary-btn:hover { background:#03045e; }
+.nav-btn { background:#00b4d8; color:white; border:none; border-radius:8px; padding:6px; }
+.nav-btn:hover { background:#0077b6; }
+.back-btn { background:#023e8a; color:white; border:none; width:35px; height:35px; border-radius:50%; }
+
+/* Cards */
+.card { background:white; padding:15px; margin-top:15px; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+.card-home { background: rgba(255,255,255,0.9); }
+
+/* Product Cards */
+.product { background:white; padding:12px; margin-top:10px; border-radius:12px; border-left:6px solid green; animation:fade 0.4s; }
+.low { border-left:6px solid red; background:#fff5f5; }
+.delete { background:crimson; color:white; border:none; margin-top:5px; padding:6px; border-radius:6px; cursor:pointer; }
+
+/* Suggestions */
+#suggestions div { background:#eef2ff; padding:8px; margin-top:4px; border-radius:6px; cursor:pointer; }
+
+/* Animations */
+.fade-in { animation: fade 0.6s; }
+.slide-up { animation: slide 0.5s; }
+@keyframes fade { from{opacity:0;} to{opacity:1;} }
+@keyframes slide { from{transform:translateY(20px);} to{transform:translateY(0);} }
+
+/* Responsive */
+@media(max-width:500px){ .app-container{ padding:10px; } input,select,button{ font-size:14px; } header h2{ font-size:18px; } }

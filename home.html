@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Manager - Home</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="home-bg">
+
+<div class="app-container fade-in">
+  <header>
+    <h2>📦 MARUTI</h2>
+    <div class="header-buttons">
+      <button class="nav-btn" onclick="goInventory()">Inventory</button>
+      <button class="nav-btn" onclick="goLowStock()">Low Stock</button>
+      <button class="nav-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <input type="text" id="search" placeholder="Search product..." autocomplete="off">
+  <div id="suggestions"></div>
+
+  <div class="card card-home slide-up">
+    <h3>Add / Update Stock</h3>
+    <input type="text" id="name" placeholder="Product Name">
+    <input type="number" id="qty" placeholder="Quantity">
+    <select id="unit">
+      <option value="kg">Kilograms</option>
+      <option value="bags">Bags</option>
+    </select>
+    <select id="type">
+      <option value="inward">Inward</option>
+      <option value="outward">Outward</option>
+    </select>
+    <input type="number" id="min" placeholder="Minimum Stock Alert">
+    <button class="primary-btn" onclick="saveProduct()">Save</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
